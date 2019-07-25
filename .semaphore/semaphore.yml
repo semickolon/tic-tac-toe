@@ -26,5 +26,5 @@ blocks:
           commands:
             - checkout
             - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
-            - npm test
+            - npm test -- --forceExit
             - npx codecov -t $CODECOV_TOKEN -c $SEMAPHORE_GIT_SHA -b $SEMAPHORE_GIT_BRANCH
