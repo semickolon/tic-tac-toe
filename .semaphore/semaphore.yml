@@ -25,4 +25,4 @@ blocks:
             - checkout
             - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
             - npm test
-            - ./node_modules/codecov/bin/codecov -t $CODECOV_TOKEN
+            - npx codecov -t $CODECOV_TOKEN -c $SEMAPHORE_GIT_SHA -b $SEMAPHORE_GIT_BRANCH
