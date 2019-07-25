@@ -19,6 +19,8 @@ blocks:
 
   - name: Run tests and upload coverage report
     task:
+      secrets:
+        - name: codecov
       jobs:
         - name: npm test and upload to codecov
           commands:
