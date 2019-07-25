@@ -18,7 +18,6 @@ module.exports = class Prompt {
     if (message)
       console.log(message);
 
-    process.stdin.setRawMode(true);
     process.stdin.resume();
 
     return new Promise(resolve => {

@@ -65,3 +65,21 @@ test('delegates to inquirer.prompt for singular list choice', async () => {
     })
   ]);
 });
+
+test('pauses prompt until a key is pressed', async () => {
+  const prompt = new Prompt();
+  jest.spyOn(console, 'log').mockImplementation();
+
+  let pause = prompt.pause();
+  process.stdin.emit('data');
+  await pause;
+
+  pause = prompt.pause('Press any key...');
+  process.stdin.emit('data');
+  await pause;
+
+  expect(console.log).toHaveBeenCalledTimes(1);
+  expect(console.log).toHaveBeenCalledWith('Press any key...');
+
+  console.log.mockRestore();
+});

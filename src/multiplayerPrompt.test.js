@@ -20,6 +20,11 @@ test('reading input delegates to targeted client', async () => {
   expect(await prompt.readLine('for 2', 2)).toBe('from 2 2');
 });
 
+test('reading input returns undefined if targeted client is invalid', async () => {
+  const prompt = new MultiplayerPrompt();
+  const input = await prompt.readLine('Sup? ', 9);
+  expect(input).toBeUndefined();
+})
 
 test('reading input with validator delegates to targeted client', async () => {
   const [client1, client2] = generateClients(2);
